@@ -20,10 +20,10 @@ set FXCEXT=fxc
 
 call :CompileShaderHLSL4 "swirl" ps ps_main
 
-@rem *** compile premultiplied version
-set FXCEXT=premultiplied.%FXCEXT%
+: @rem *** compile premultiplied version
+: set FXCEXT=premultiplied.%FXCEXT%
 
-call :CompileShaderHLSL4 "swirl" ps ps_main_pm
+: call :CompileShaderHLSL4 "swirl" ps ps_main_pm
 
 echo .
 if %error% == 0 (
