@@ -26,13 +26,6 @@ struct PS_OUTPUT
     float4 Color : SV_TARGET;   
 };
 
-float4 GetColorPM(float4 Image)
-{
-	if ( Image.a != 0 )
-		Image.rgb /= Image.a;
-	return Image;
-}
-
 float4 ps_main(in PS_INPUT In) : SV_TARGET
 {
     float2 output;
@@ -49,27 +42,5 @@ float4 ps_main(in PS_INPUT In) : SV_TARGET
     output = float2(_radius*cos(_angle),_radius*sin(_angle))+offset;
 
     float4 Out = overlay ? Tex1.Sample(_Tex1,output)*In.Tint : Tex0.Sample(_Tex0,output)*In.Tint;
-    return Out;
-}
-
-float4 ps_main_pm(in PS_INPUT In) : SV_TARGET
-{
-    float2 output;
-
-    float2 offset = float2(offsetX,offsetY);
-    float2 size = float2(width,height);
-
-    float2 uv = In.texCoord.xy - offset;
-
-    float len = length(uv/size);
-    float _angle = atan2(uv.y,uv.x)+ (angle*PI) * smoothstep(radius,0.0,len);
-    float _radius = length(uv);
-
-    output = float2(_radius*cos(_angle),_radius*sin(_angle))+offset;
-
-    float4 Out = overlay ? Tex1.Sample(_Tex1,output)*In.Tint : Tex0.Sample(_Tex0,output);
-
-    Out.rgb *= Out.a;
-    Out *= In.Tint;
     return Out;
 }
