@@ -14,17 +14,6 @@ cbuffer PS_VARIABLES : register(b0)
     bool overlay;
 }
 
-cbuffer PS_VARIABLES : register(b0)
-{
-    float aperture;
-    float scale;
-    float fScale;
-    float xScale;
-    bool overlay;
-    int edgemode;
-    float edgeScale;
-}
-
 struct PS_INPUT
 {
     float4 Tint : COLOR0;
