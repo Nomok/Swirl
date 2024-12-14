@@ -5,23 +5,27 @@ sampler2D Tex1 : register(s1);
 
 float radius;
 float angle;
-float centerX;
-float centerY;
+float offsetX;
+float offsetY;
+float sizeOffsetX;
+float sizeOffsetY;
 bool overlay;
 
 float4 ps_main(in float2 texCoord : TEXCOORD0) : COLOR0
 {
     float4 Out;
     float2 output;
-    float2 center = float2(centerX,centerY);
 
-    float2 uv = texCoord.xy - center;
+    float2 offset = float2(offsetX,offsetY);
+    float2 sizeOffset = float2(sizeOffsetX,sizeOffsetY);
 
-    float len = length(uv);
+    float2 uv = texCoord.xy - offset;
+
+    float len = length(uv*sizeOffset);
     float _angle = atan2(uv.y,uv.x)+ (angle*PI) * smoothstep(radius,0.0,len);
     float _radius = length(uv);
 
-    output = float2(_radius*cos(_angle),_radius*sin(_angle))+center;
+    output = float2(_radius*cos(_angle),_radius*sin(_angle))+offset;
 
     Out = overlay ? tex2D(Tex1,output) : tex2D(Tex0,output);
     return Out;

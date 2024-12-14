@@ -21,18 +21,32 @@
         <value>2.0</value>
     </parameter>
     <parameter>
-        <name>CenterX</name>
-        <code>centerX</code>
+        <name>Offset X</name>
+        <code>offsetX</code>
         <type>float</type>
         <property>edit</property>
         <value>0.5</value>
     </parameter>
     <parameter>
-        <name>CenterY</name>
-        <code>centerY</code>
+        <name>Offset Y</name>
+        <code>offsetY</code>
         <type>float</type>
         <property>edit</property>
         <value>0.5</value>
+    </parameter>
+    <parameter>
+        <name>Size Offset X</name>
+        <code>sizeOffsetX</code>
+        <type>float</type>
+        <property>edit</property>
+        <value>1.0</value>
+    </parameter>
+    <parameter>
+        <name>Size Offset Y</name>
+        <code>sizeOffsetY</code>
+        <type>float</type>
+        <property>edit</property>
+        <value>1.0</value>
     </parameter>
     <parameter>
 		<name>Overlay Mode</name>
