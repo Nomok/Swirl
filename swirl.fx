@@ -21,7 +21,7 @@ float4 ps_main(in float2 texCoord : TEXCOORD0) : COLOR0
 
     float2 uv = texCoord.xy - offset;
 
-    float len = length(uv*size);
+    float len = length(uv/size);
     float _angle = atan2(uv.y,uv.x)+ (angle*PI) * smoothstep(radius,0.0,len);
     float _radius = length(uv);
 
