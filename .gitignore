@@ -1,0 +1,4 @@
+# Compiled shaders
+*.fxc
+*.premultiplied.fxc
+fxc.exe
